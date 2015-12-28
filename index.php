@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Загрузка файлов на сервер</title>
+  <title></title>
 </head>
 <body>
       <form action="test.php" method="post" enctype="multipart/form-data">
