@@ -1,9 +1,10 @@
 <html>
 <head>
-  <title></title>
+  <title>TestWork</title>
 </head>
 <body>
 <?php
+    mkdir("images");
     if($_FILES["filename"]["size"] > 1024*3*1024){
         echo ("Размер файла превышает три мегабайта");
         exit;
@@ -14,15 +15,15 @@
     $image = new SimpleImage();
     $image->load("images/".$_FILES["filename"]["name"]);
     $image->resize(2, 2);
-    $image->save('image4.jpg');
-    $image2 = imageCreateFromJpeg('image4.jpg');
-    $color = imagecolorat($image2, 1, 1);
+    $image->save('image.jpg');
+    $image_resize = imageCreateFromJpeg('image.jpg');
+    $color = imagecolorat($image_resize, 1, 1);
     $r = ($color >> 16) & 0xFF;
     $g = ($color >> 8) & 0xFF;
     $b = $color & 0xFF;
     // echo $r."<br />";
     // echo $g."<br />";
-    //echo $b."<br />";
+    // echo $b."<br />";
     echo "<img src = 'images/".$_FILES["filename"]["name"]."' >" . "<br />";
     $color_echo = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
     if ($color_echo <= 125){
